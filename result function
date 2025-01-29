@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Wedding Planners - Search Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-rose-50">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-rose-500">Dream Wedding Planners</a>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="text-gray-600 hover:text-rose-500">Home</a></li>
+                <li><a href="services.html" class="text-gray-600 hover:text-rose-500">Services</a></li>
+                <li><a href="about.html" class="text-gray-600 hover:text-rose-500">About</a></li>
+                <li><a href="contact.html" class="text-gray-600 hover:text-rose-500">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="min-h-screen py-12">
+        <div class="container mx-auto px-4">
+            <h1 id="results-title" class="text-4xl font-bold text-center mb-12">Search Results</h1>
+            <div id="results-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Results will be dynamically added here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Dream Wedding Planners. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+// ... (keep the existing code)
+
+// Mock data for search results
+const mockServices = {
+    London: {
+        halls: ["The Savoy", "The Dorchester", "Claridge's"],
+        florists: ["Philippa Craddock", "Rebel Rebel", "Bloom & Wild"],
+        decorators: ["The Wedding Planner", "Ginger Ray", "Boho Weddings"],
+        caterers: ["Rhubarb", "Caterer A", "Caterer B"],
+        photographers: ["Photographer A", "Photographer B", "Photographer C"],
+    },
+    Paris: {
+        halls: ["Château de Chantilly", "Palais Garnier", "Musée d'Orsay"],
+        florists: ["Florist A", "Florist B", "Florist C"],
+        decorators: ["Decorator A", "Decorator B", "Decorator C"],
+        caterers: ["Caterer A", "Caterer B", "Caterer C"],
+        photographers: ["Photographer A", "Photographer B", "Photographer C"],
+    },
+    "New York": {
+        halls: ["The Plaza Hotel", "The St. Regis New York", "The Pierre Hotel"],
+        florists: ["Florist A", "Florist B", "Florist C"],
+        decorators: ["Decorator A", "Decorator B", "Decorator C"],
+        caterers: ["Caterer A", "Caterer B", "Caterer C"],
+        photographers: ["Photographer A", "Photographer B", "Photographer C"],
+    },
+};
+
+// Function to handle search form submission
+function handleSearch(e) {
+    e.preventDefault();
+    const searchInput = document.getElementById('search-input');
+    const location = searchInput.value.trim();
+    if (location) {
+        window.location.href = `results.html?location=${encodeURIComponent(location)}`;
+    }
+}
+
+// Function to display search results
+function displaySearchResults() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const location = urlParams.get('location');
+    const resultsContainer = document.getElementById('results-container');
+    const resultsTitle = document.getElementById('results-title');
+
+    if (resultsContainer && resultsTitle) {
+        resultsTitle.textContent = `Wedding Services in ${location}`;
+
+        const services = mockServices[location];
+        if (services) {
+            let resultsHTML = '';
+            for (const [category, items] of Object.entries(services)) {
+                resultsHTML += `
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 search-result">
+                        <h2 class="text-xl font-semibold mb-4">${category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+                        <ul class="list-disc list-inside">
+                            ${items.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            resultsContainer.innerHTML = resultsHTML;
+        } else {
+            resultsContainer.innerHTML = `<p class="text-center text-xl">No results found for ${location}. Please try another location.</p>`;
+        }
+    }
+}
+
+// Placeholder function - needs to be implemented properly
+function populateServices() {
+    //Implementation for populating services would go here.  This is a placeholder.
+}
+
+function populateTestimonials() {
+    //Implementation for populating testimonials would go here. This is a placeholder.
+}
+
+function handleAnimations() {
+    //Implementation for handling animations would go here. This is a placeholder.
+}
+
+function handleFormSubmission() {
+    //Implementation for handling form submission would go here. This is a placeholder.
+}
+
+
+// Initialize everything when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    populateServices();
+    populateTestimonials();
+    handleAnimations();
+    handleFormSubmission();
+
+    // Add event listener for search form
+    const searchForm = document.getElementById('search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', handleSearch);
+    }
+
+    // Display search results if on the results page
+    if (window.location.pathname.includes('results.html')) {
+        displaySearchResults();
+    }
+});
