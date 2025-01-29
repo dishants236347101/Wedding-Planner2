@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Wedding Planners - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-rose-50">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-rose-500">Dream Wedding Planners</a>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="text-gray-600 hover:text-rose-500">Home</a></li>
+                <li><a href="services.html" class="text-gray-600 hover:text-rose-500">Services</a></li>
+                <li><a href="about.html" class="text-gray-600 hover:text-rose-500">About</a></li>
+                <li><a href="contact.html" class="text-gray-600 hover:text-rose-500">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="relative h-screen flex items-center justify-center">
+            <img src="https://source.unsplash.com/random/1920x1080/?wedding" alt="Wedding couple" class="absolute inset-0 w-full h-full object-cover">
+            <div class="z-10 text-center text-white">
+                <h1 class="text-5xl font-bold mb-4">Your Perfect Day Awaits</h1>
+                <p class="text-xl mb-8">Let us make your wedding dreams come true</p>
+                <a href="#" class="bg-white text-rose-500 hover:bg-rose-100 px-6 py-3 rounded-md font-medium transition-colors duration-300">Start Planning</a>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="services-container">
+                    <!-- Services will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-rose-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">What Our Couples Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="testimonials-container">
+                    <!-- Testimonials will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Dream Wedding Planners. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
